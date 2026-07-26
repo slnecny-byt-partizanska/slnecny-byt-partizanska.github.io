@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="sk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#1e3a34">
+  <title>Slnečný byt na Partizánskej · Banská Bystrica</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --pine:#1e3a34;
+      --pine-2:#294e46;
+      --paper:#faf7f1;
+      --card:#fff;
+      --ink:#22302c;
+      --muted:#6b7a74;
+      --gold:#b98a3c;
+      --gold-soft:#f3e8d3;
+      --line:#e7e0d3;
+      --danger:#a53d35;
+      --danger-soft:#fff0ed;
+      --success:#386b56;
+      --radius:18px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+    body{font-family:'Manrope',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.55;padding-bottom:96px}
+    button,input,textarea{font:inherit}
+    button{cursor:pointer}
+    .wrap{max-width:520px;margin:0 auto;padding:0 18px}
+
+    header{
+      position:relative;overflow:visible;z-index:20;
+      color:#f7f3ea;padding:24px 0 36px;border-radius:0 0 30px 30px;
+      background:
+        radial-gradient(circle at 82% 22%,rgba(255,214,123,.25) 0 9%,transparent 10%),
+        radial-gradient(circle at 88% 12%,rgba(255,255,255,.10) 0 18%,transparent 19%),
+        linear-gradient(150deg,var(--pine-2),var(--pine));
+      box-shadow:0 10px 30px rgba(30,58,52,.15)
+    }
+    .topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px}
+    .brand{font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:800;opacity:.82;min-width:0}
+    h1{font-family:'Fraunces',serif;font-size:clamp(27px,8vw,36px);line-height:1.1;letter-spacing:-.02em}
+    .subtitle{margin-top:7px;font-size:14px;opacity:.88}
+    .address{display:flex;align-items:center;gap:9px;margin-top:15px;color:#fff;text-decoration:none;font-size:14px;font-weight:700;padding:11px 13px;border-radius:13px;background:rgba(255,255,255,.11);border:1px solid rgba(255,255,255,.18)}
+    .address span:nth-child(2){flex:1}
+
+    .lang{position:relative;flex-shrink:0}
+    .lang-toggle{display:flex;align-items:center;gap:7px;border:1px solid rgba(255,255,255,.24);background:rgba(255,255,255,.13);color:#fff;font-weight:800;font-size:12px;padding:8px 11px;border-radius:999px}
+    .lang-menu{position:absolute;right:0;top:calc(100% + 9px);z-index:200;width:210px;max-height:min(70vh,420px);overflow:auto;background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:16px;box-shadow:0 18px 42px rgba(10,25,20,.24);padding:7px;display:none}
+    .lang.open .lang-menu{display:block}
+    .lang-option{width:100%;display:flex;align-items:center;gap:10px;border:0;background:transparent;color:var(--ink);font-weight:700;font-size:14px;padding:10px 11px;border-radius:11px;text-align:left}
+    .lang-option.on{background:var(--pine);color:#fff}
+    .lang-option .flag{font-size:19px;width:24px;text-align:center}
+    .lang-option .check{margin-left:auto;opacity:0}.lang-option.on .check{opacity:1}
+
+    .arrival-card{margin-top:-17px;position:relative;z-index:5;background:rgba(255,255,255,.98);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 8px 24px rgba(30,58,52,.10);padding:17px}
+    .times{display:flex;gap:10px}
+    .time{flex:1;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:13px 10px;text-align:center}
+    .t-label{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+    .t-val{font-family:'Fraunces';font-size:27px;font-weight:700}.t-note{font-size:12px;color:var(--muted)}
+    details summary{cursor:pointer;list-style:none}details summary::-webkit-details-marker{display:none}
+    .clean-details{margin-top:12px;background:var(--gold-soft);border:1px solid #ead7b2;border-radius:14px;overflow:hidden}
+    .clean-details summary,.tax-details summary,.invoice-card summary,.route-details summary{display:flex;align-items:center;gap:10px;padding:13px 14px;font-weight:800}
+    .details-title,.summary-text{flex:1}.chevron{font-size:12px;transition:.2s}details[open] .chevron{transform:rotate(180deg)}
+    .details-body{border-top:1px solid #dfc99f;padding:13px 14px 14px;font-size:14px;color:#604c29}
+
+    section{margin-top:28px}h2{font-family:'Fraunces';font-size:23px;margin-bottom:12px}
+    .info-card,.tax-details,.invoice-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);margin-bottom:13px}
+    .info-card{padding:17px}.card-head{display:flex;align-items:flex-start;gap:12px}.icon{flex:0 0 40px;height:40px;border-radius:12px;background:var(--gold-soft);display:flex;align-items:center;justify-content:center;font-size:20px}
+    .info-card h3{font-size:17px;margin-bottom:4px}.info-card p{font-size:15px;color:var(--muted)}.info-card strong{color:var(--ink)}
+    .primary-link{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px;background:var(--pine);color:#fff;text-decoration:none;font-weight:800;padding:13px;border-radius:12px}
+    .secondary-link{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:10px;background:var(--paper);color:var(--pine);border:1px solid var(--line);text-decoration:none;font-weight:800;padding:12px;border-radius:12px}
+    .code-card{margin-top:14px;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:17px;text-align:center}
+    .code-label{font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--gold)}
+    .code{font-family:'Fraunces';font-size:60px;font-weight:700;letter-spacing:.12em;line-height:1.08;margin:5px 0}
+    .return-warning{margin-top:14px;background:var(--danger-soft);border:1px solid #f1c4bd;border-left:5px solid var(--danger);border-radius:15px;padding:15px}
+    .warning-title{font-weight:800;color:var(--danger);font-size:13px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}.return-warning p{color:#6e302b;font-size:15px;font-weight:700}
+    .floor-badge{display:inline-flex;align-items:center;gap:7px;margin-top:11px;background:var(--gold-soft);color:#5d4823;font-weight:800;padding:9px 11px;border-radius:11px}
+    .wifi-box{margin-top:13px;display:grid;gap:9px}.wifi-row{background:var(--paper);border:1px solid var(--line);border-radius:13px;padding:12px 13px}.wifi-row small{display:block;color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:10px}.wifi-row strong{display:block;margin-top:3px;font-size:17px;overflow-wrap:anywhere}
+
+    .tax-details,.invoice-card{overflow:hidden}.tax-details summary,.invoice-card summary{padding:17px}.tax-body,.invoice-body{border-top:1px solid var(--line);padding:16px}
+    .tax-price{margin-top:14px;background:var(--gold-soft);border-radius:14px;padding:14px;text-align:center}.tax-price strong{font-family:'Fraunces';font-size:26px}
+    .tax-options{display:grid;gap:10px;margin-top:13px}.tax-option{background:var(--paper);border:1px solid var(--line);border-radius:13px;padding:13px}.tax-option b{display:block;font-size:14px;margin-bottom:3px}.iban{font-weight:800;overflow-wrap:anywhere;color:var(--pine)}
+    .tax-calculator{margin-top:15px;background:var(--paper);border:1px solid var(--line);border-radius:15px;padding:15px}.tax-calculator h3{font-size:16px;margin-bottom:5px}.calc-help{font-size:13px;color:var(--muted);margin-bottom:12px}.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.calc-field label{display:block;font-size:12px;font-weight:800;color:var(--muted);margin-bottom:5px}.calc-field input{width:100%;border:1px solid var(--line);background:#fff;border-radius:11px;padding:12px;color:var(--ink);font-weight:800;text-align:center;outline:none}.calc-result{margin-top:12px;background:var(--pine);color:#fff;border-radius:13px;padding:13px 14px;display:flex;justify-content:space-between;align-items:center}.calc-result strong{font-size:22px}.calc-formula{font-size:12px;opacity:.8}
+    .summary-text small{display:block;color:var(--muted);font-weight:600;margin-top:2px}.invoice-body>p{font-size:14px;color:var(--muted);margin-bottom:14px}.form-grid{display:grid;gap:11px}.field label{display:block;font-size:12px;font-weight:800;color:var(--muted);margin-bottom:5px}.field input,.field textarea{width:100%;border:1px solid var(--line);background:#fff;border-radius:11px;padding:12px;color:var(--ink);outline:none}.field textarea{min-height:96px;resize:vertical}.send-form{width:100%;margin-top:14px;border:0;border-radius:11px;padding:13px 12px;font-weight:800;background:var(--pine);color:#fff}.form-status{min-height:21px;margin-top:9px;font-size:13px;font-weight:700;text-align:center}.success{color:var(--success)}.error{color:var(--danger)}
+    footer{margin:30px 0 10px;text-align:center;font-size:13px;color:var(--muted)}
+
+    .sticky-contact{position:fixed;left:0;right:0;bottom:0;z-index:30;background:rgba(250,247,241,.94);backdrop-filter:blur(9px);border-top:1px solid var(--line);padding:11px 18px calc(11px + env(safe-area-inset-bottom))}.sticky-contact button{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;max-width:520px;margin:0 auto;background:var(--gold);color:#fff;border:0;font-weight:800;padding:14px;border-radius:12px}
+    .contact-overlay{position:fixed;inset:0;background:rgba(17,28,25,.48);z-index:300;display:none;align-items:flex-end;justify-content:center;padding:18px}.contact-overlay.open{display:flex}.contact-sheet{width:100%;max-width:520px;background:var(--paper);border-radius:22px;padding:18px;box-shadow:0 18px 50px rgba(0,0,0,.28)}.sheet-head{display:flex;align-items:center;gap:10px;margin-bottom:13px}.sheet-head h2{margin:0;flex:1}.sheet-close{width:36px;height:36px;border:1px solid var(--line);background:#fff;border-radius:50%}.contact-list{display:grid;gap:10px}.contact-row{background:#fff;border:1px solid var(--line);border-radius:15px;padding:13px;display:flex;align-items:center;gap:12px}.contact-number{flex:1;font-size:16px;font-weight:800}.contact-actions{display:flex;gap:7px}.contact-actions a{color:var(--pine);background:var(--gold-soft);text-decoration:none;font-weight:800;border-radius:10px;padding:9px 10px;font-size:13px}
+    @media(max-width:390px){.brand{font-size:9px;letter-spacing:.08em}.lang-toggle{padding:7px 9px}.contact-row{flex-wrap:wrap}.contact-actions{width:100%}.contact-actions a{flex:1;text-align:center}}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand" data-i18n="brand">Ďakujeme za vašu rezerváciu!</div>
+      <div class="lang" id="languagePicker">
+        <button class="lang-toggle" id="langToggle" type="button" onclick="toggleLangMenu(event)" aria-expanded="false">🌐 <span id="currentLang">SK</span> ▼</button>
+        <div class="lang-menu">
+          <button class="lang-option" id="btn-sk" type="button" onclick="setLang('sk',event)"><span class="flag">🇸🇰</span>Slovenčina<span class="check">✓</span></button>
+          <button class="lang-option" id="btn-en" type="button" onclick="setLang('en',event)"><span class="flag">🇬🇧</span>English<span class="check">✓</span></button>
+          <button class="lang-option" id="btn-de" type="button" onclick="setLang('de',event)"><span class="flag">🇩🇪</span>Deutsch<span class="check">✓</span></button>
+          <button class="lang-option" id="btn-uk" type="button" onclick="setLang('uk',event)"><span class="flag">🇺🇦</span>Українська<span class="check">✓</span></button>
+          <button class="lang-option" id="btn-es" type="button" onclick="setLang('es',event)"><span class="flag">🇪🇸</span>Español<span class="check">✓</span></button>
+          <button class="lang-option" id="btn-hu" type="button" onclick="setLang('hu',event)"><span class="flag">🇭🇺</span>Magyar<span class="check">✓</span></button>
+        </div>
+      </div>
+    </div>
+    <h1 data-i18n="title">Slnečný byt na Partizánskej ☀️</h1>
+    <p class="subtitle" data-i18n="subtitle">Všetko potrebné pre pohodlný príchod a pobyt.</p>
+    <a class="address" href="https://www.google.com/maps/search/?api=1&query=Partiz%C3%A1nska+cesta+19%2C+Bansk%C3%A1+Bystrica" target="_blank" rel="noopener"><span>📍</span><span data-i18n="addressText"><strong>Adresa:</strong> Partizánska cesta 19, Banská Bystrica</span><span>›</span></a>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="arrival-card">
+    <div class="times">
+      <div class="time"><div class="t-label">Check-in</div><div class="t-val">14:00</div><div class="t-note" data-i18n="tin">od</div></div>
+      <div class="time"><div class="t-label">Check-out</div><div class="t-val">10:00</div><div class="t-note" data-i18n="tout">do</div></div>
+    </div>
+    <details class="clean-details">
+      <summary><span>🕙</span><span class="details-title" data-i18n="lateSummary">Potrebujete neskorší check-out?</span><span class="chevron">▼</span></summary>
+      <div class="details-body" data-i18n="lateBody">Pani upratovačky máme dohodnuté vždy na 10:00. Keďže majú aj inú prácu, zmenu času im musíme oznámiť vopred. Pri neskoršom check-oute si preto účtujú dodatočný poplatok. Kontaktujte nás, prosím, vopred.</div>
+    </details>
+  </div>
+
+  <section>
+    <h2 data-i18n="arrivalTitle">Informácie k príchodu</h2>
+
+    <article class="info-card">
+      <div class="card-head"><div class="icon">🚗</div><div><h3 data-i18n="parkingTitle">Parkovanie</h3><p data-i18n="parkingText">Kľúčik od rampy nájdete spolu s kľúčmi od bytu. Za rampou môžete zaparkovať na <strong>ktoromkoľvek voľnom mieste</strong>.</p></div></div>
+    </article>
+
+    <article class="info-card">
+      <div class="card-head"><div class="icon">🔑</div><div><h3 data-i18n="keyTitle">Schránka na kľúče</h3><p data-i18n="keyText">Presné miesto schránky nájdete podľa krátkeho videonávodu.</p></div></div>
+      <a class="primary-link" href="https://youtube.com/shorts/o6Y5WcKyq6E" target="_blank" rel="noopener" data-i18n="openKeyVideo">▶️ Otvoriť video ku kľúčom</a>
+      <div class="code-card"><div class="code-label" data-i18n="codeLabel">Kód do schránky</div><div class="code">1907</div></div>
+      <div class="return-warning"><div class="warning-title" data-i18n="important">Dôležité</div><p data-i18n="returnKey">Po ukončení pobytu vráťte kľúče opäť do tejto schránky.</p></div>
+    </article>
+
+    <article class="info-card">
+      <div class="card-head"><div class="icon">🚪</div><div><h3 data-i18n="apartmentTitle">Ako nájsť byt</h3><p data-i18n="apartmentText">Byt je na <strong>3. poschodí</strong>, číslo dverí <strong>4</strong>. Na konci chodby odbočte doprava.</p><div class="floor-badge" data-i18n="doorBadge">3. poschodie · dvere č. 4</div></div></div>
+      <a class="primary-link" href="https://youtube.com/shorts/9H1lRpCXTHs?si=ZbMr-Y1YFlO1i9wJ" target="_blank" rel="noopener" data-i18n="openApartmentVideo">▶️ Otvoriť video k bytu</a>
+    </article>
+
+    <article class="info-card">
+      <div class="card-head"><div class="icon">📶</div><div><h3 data-i18n="wifiTitle">Wi‑Fi</h3><p data-i18n="wifiText">Údaje na pripojenie k internetu:</p></div></div>
+      <div class="wifi-box">
+        <div class="wifi-row"><small data-i18n="wifiNameLabel">Názov siete</small><strong>Cudy 5630</strong></div>
+        <div class="wifi-row"><small data-i18n="wifiPasswordLabel">Heslo</small><strong>19417257</strong></div>
+      </div>
+    </article>
+  </section>
+
+  <section>
+    <h2 data-i18n="taxTitle">Mestská daň</h2>
+    <details class="tax-details">
+      <summary><div class="icon">🏛️</div><div class="summary-text"><span data-i18n="taxHeading">Úhrada mestskej dane</span><small data-i18n="taxSmall">Kliknite pre možnosti platby a kalkulačku.</small></div><span class="chevron">▼</span></summary>
+      <div class="tax-body">
+        <p data-i18n="taxIntro">Mestská daň je povinná a uhrádza sa za každého hosťa a každú noc pobytu.</p>
+        <div class="tax-price"><strong>2 €</strong> <span data-i18n="taxPrice">za osobu / noc</span></div>
+        <div class="tax-options">
+          <div class="tax-option"><b data-i18n="taxCashTitle">Možnosť 1 · Hotovosť</b><span data-i18n="taxCashText">Vložte hotovosť do pokladničky s názvom „MESTSKÁ DAŇ“.</span></div>
+          <div class="tax-option"><b data-i18n="taxBankTitle">Možnosť 2 · Bankový prevod</b><span class="iban">SK77 1100 0000 0029 4018 1541</span></div>
+        </div>
+        <div class="tax-calculator">
+          <h3 data-i18n="calcTitle">Kalkulačka mestskej dane</h3><p class="calc-help" data-i18n="calcHelp">Počet osôb × počet nocí × 2 €</p>
+          <div class="calc-grid">
+            <div class="calc-field"><label data-i18n="personsLabel">Počet osôb</label><input id="taxPersons" type="text" value="1" inputmode="numeric" pattern="[0-9]*" maxlength="2" onfocus="this.select()" oninput="sanitizeTaxInput(this,50)" onblur="normalizeTaxInput(this,50)"></div>
+            <div class="calc-field"><label data-i18n="nightsLabel">Počet nocí</label><input id="taxNights" type="text" value="1" inputmode="numeric" pattern="[0-9]*" maxlength="3" onfocus="this.select()" oninput="sanitizeTaxInput(this,365)" onblur="normalizeTaxInput(this,365)"></div>
+          </div>
+          <div class="calc-result"><div><span data-i18n="totalLabel">Spolu na úhradu</span><div class="calc-formula" id="taxFormula">1 × 1 × 2 €</div></div><strong id="taxResult">2 €</strong></div>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <section>
+    <h2 data-i18n="documentsTitle">Faktúra alebo rekreačný poukaz</h2>
+    <details class="invoice-card">
+      <summary><div class="icon">🧾</div><div class="summary-text"><span data-i18n="documentsSummary">Potrebujete doklad?</span><small data-i18n="documentsSmall">Vyplňte údaje a odošlite ich priamo nám.</small></div><span class="chevron">▼</span></summary>
+      <div class="invoice-body">
+        <p data-i18n="documentsText">Uveďte meno alebo názov firmy, adresu, prípadne IČO, e-mail a poznámku.</p>
+        <form id="invoiceForm" onsubmit="submitInvoice(event)">
+          <div class="form-grid">
+            <div class="field"><label data-i18n="nameLabel">Meno a priezvisko / názov firmy</label><input id="invoiceName" required></div>
+            <div class="field"><label data-i18n="billingAddressLabel">Fakturačná adresa</label><input id="invoiceAddress" required></div>
+            <div class="field"><label data-i18n="companyLabel">IČO (voliteľné)</label><input id="invoiceCompanyId"></div>
+            <div class="field"><label data-i18n="emailLabel">E-mail na zaslanie dokladu</label><input id="invoiceEmail" type="email" required></div>
+            <div class="field"><label data-i18n="noteLabel">Poznámka (voliteľné)</label><textarea id="invoiceNote"></textarea></div>
+          </div>
+          <button class="send-form" id="sendFormBtn" data-i18n="sendForm">Odoslať údaje</button>
+          <div class="form-status" id="formStatus"></div>
+        </form>
+      </div>
+    </details>
+  </section>
+
+  <footer data-i18n="footer">Ďakujeme, že ste si vybrali naše ubytovanie. Prajeme príjemný pobyt! ☺️</footer>
+</main>
+
+<div class="sticky-contact"><button onclick="openContacts()" data-i18n="stickyContact">📞 Potrebujete pomoc? Kontaktujte nás</button></div>
+<div class="contact-overlay" id="contactOverlay" onclick="overlayClose(event)">
+  <div class="contact-sheet">
+    <div class="sheet-head"><h2 data-i18n="contactTitle">Kontaktujte nás</h2><button class="sheet-close" onclick="closeContacts()">×</button></div>
+    <div class="contact-list">
+      <div class="contact-row"><div class="contact-number">0918 290 895</div><div class="contact-actions"><a href="tel:+421918290895" data-i18n="callShort">Zavolať</a><a href="sms:+421918290895">SMS</a></div></div>
+      <div class="contact-row"><div class="contact-number">0944 304 984</div><div class="contact-actions"><a href="tel:+421944304984" data-i18n="callShort">Zavolať</a><a href="sms:+421944304984">SMS</a></div></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const I18N = {
+  sk:{
+    brand:'Ďakujeme za vašu rezerváciu!',title:'Slnečný byt na Partizánskej ☀️',subtitle:'Všetko potrebné pre pohodlný príchod a pobyt.',addressText:'<strong>Adresa:</strong> Partizánska cesta 19, Banská Bystrica',tin:'od',tout:'do',lateSummary:'Potrebujete neskorší check-out?',lateBody:'Pani upratovačky máme dohodnuté vždy na 10:00. Keďže majú aj inú prácu, zmenu času im musíme oznámiť vopred. Pri neskoršom check-oute si preto účtujú dodatočný poplatok. Kontaktujte nás, prosím, vopred.',arrivalTitle:'Informácie k príchodu',parkingTitle:'Parkovanie',parkingText:'Kľúčik od rampy nájdete spolu s kľúčmi od bytu. Za rampou môžete zaparkovať na <strong>ktoromkoľvek voľnom mieste</strong>.',keyTitle:'Schránka na kľúče',keyText:'Presné miesto schránky nájdete podľa krátkeho videonávodu.',openKeyVideo:'▶️ Otvoriť video ku kľúčom',codeLabel:'Kód do schránky',important:'Dôležité',returnKey:'Po ukončení pobytu vráťte kľúče opäť do tejto schránky.',apartmentTitle:'Ako nájsť byt',apartmentText:'Byt je na <strong>3. poschodí</strong>, číslo dverí <strong>4</strong>. Na konci chodby odbočte doprava.',doorBadge:'3. poschodie · dvere č. 4',openApartmentVideo:'▶️ Otvoriť video k bytu',wifiTitle:'Wi‑Fi',wifiText:'Údaje na pripojenie k internetu:',wifiNameLabel:'Názov siete',wifiPasswordLabel:'Heslo',taxTitle:'Mestská daň',taxHeading:'Úhrada mestskej dane',taxSmall:'Kliknite pre možnosti platby a kalkulačku.',taxIntro:'Mestská daň je povinná a uhrádza sa za každého hosťa a každú noc pobytu.',taxPrice:'za osobu / noc',taxCashTitle:'Možnosť 1 · Hotovosť',taxCashText:'Vložte hotovosť do pokladničky s názvom „MESTSKÁ DAŇ“.',taxBankTitle:'Možnosť 2 · Bankový prevod',calcTitle:'Kalkulačka mestskej dane',calcHelp:'Počet osôb × počet nocí × 2 €',personsLabel:'Počet osôb',nightsLabel:'Počet nocí',totalLabel:'Spolu na úhradu',documentsTitle:'Faktúra alebo rekreačný poukaz',documentsSummary:'Potrebujete doklad?',documentsSmall:'Vyplňte údaje a odošlite ich priamo nám.',documentsText:'Uveďte meno alebo názov firmy, adresu, prípadne IČO, e-mail a poznámku.',nameLabel:'Meno a priezvisko / názov firmy',billingAddressLabel:'Fakturačná adresa',companyLabel:'IČO (voliteľné)',emailLabel:'E-mail na zaslanie dokladu',noteLabel:'Poznámka (voliteľné)',sendForm:'Odoslať údaje',sending:'Odosielam…',sent:'Údaje boli úspešne odoslané. Ďakujeme ✓',sendError:'Odoslanie sa nepodarilo. Otvoríme pripravený e-mail.',stickyContact:'📞 Potrebujete pomoc? Kontaktujte nás',contactTitle:'Kontaktujte nás',callShort:'Zavolať',footer:'Ďakujeme, že ste si vybrali naše ubytovanie. Prajeme príjemný pobyt! ☺️'
+  },
+  en:{
+    brand:'Thank you for your reservation!',title:'Sunny Apartment on Partizánska ☀️',subtitle:'Everything you need for an easy arrival and a comfortable stay.',addressText:'<strong>Address:</strong> Partizánska cesta 19, Banská Bystrica',tin:'from',tout:'by',lateSummary:'Do you need a later check-out?',lateBody:'Our cleaning staff are scheduled for 10:00 AM. Any change must be arranged in advance, and an additional fee applies to a later check-out. Please contact us beforehand.',arrivalTitle:'Arrival information',parkingTitle:'Parking',parkingText:'The gate key is together with the apartment keys. Behind the gate, you may park in <strong>any available space</strong>.',keyTitle:'Key lockbox',keyText:'The short video shows the exact location of the key lockbox.',openKeyVideo:'▶️ Open key video',codeLabel:'Lockbox code',important:'Important',returnKey:'At the end of your stay, please return the keys to this lockbox.',apartmentTitle:'How to find the apartment',apartmentText:'The apartment is on the <strong>3rd floor</strong>, door number <strong>4</strong>. At the end of the corridor, turn right.',doorBadge:'3rd floor · door no. 4',openApartmentVideo:'▶️ Open apartment video',wifiTitle:'Wi‑Fi',wifiText:'Internet connection details:',wifiNameLabel:'Network name',wifiPasswordLabel:'Password',taxTitle:'City tax',taxHeading:'City tax payment',taxSmall:'Tap for payment options and calculator.',taxIntro:'City tax is mandatory for every guest and every night.',taxPrice:'per person / night',taxCashTitle:'Option 1 · Cash',taxCashText:'Place the cash in the box labelled “MESTSKÁ DAŇ”.',taxBankTitle:'Option 2 · Bank transfer',calcTitle:'City tax calculator',calcHelp:'Guests × nights × €2',personsLabel:'Number of guests',nightsLabel:'Number of nights',totalLabel:'Total to pay',documentsTitle:'Invoice or recreation voucher',documentsSummary:'Do you need a document?',documentsSmall:'Enter the details and send them directly to us.',documentsText:'Enter your name or company, billing address, company ID if applicable, e-mail and note.',nameLabel:'Full name / company',billingAddressLabel:'Billing address',companyLabel:'Company ID (optional)',emailLabel:'E-mail for the document',noteLabel:'Note (optional)',sendForm:'Send details',sending:'Sending…',sent:'Details sent successfully. Thank you ✓',sendError:'Sending failed. We will open a prepared e-mail.',stickyContact:'📞 Need help? Contact us',contactTitle:'Contact us',callShort:'Call',footer:'Thank you for choosing our accommodation. Enjoy your stay! ☺️'
+  },
+  de:{
+    brand:'Vielen Dank für Ihre Reservierung!',title:'Sonnige Wohnung an der Partizánska ☀️',subtitle:'Alles für eine einfache Anreise und einen angenehmen Aufenthalt.',addressText:'<strong>Adresse:</strong> Partizánska cesta 19, Banská Bystrica',tin:'ab',tout:'bis',lateSummary:'Benötigen Sie einen späteren Check-out?',lateBody:'Unser Reinigungspersonal ist für 10:00 Uhr eingeplant. Änderungen müssen im Voraus vereinbart werden. Für einen späteren Check-out fällt eine zusätzliche Gebühr an.',arrivalTitle:'Informationen zur Anreise',parkingTitle:'Parken',parkingText:'Der Schlüssel für die Schranke liegt bei den Wohnungsschlüsseln. Hinter der Schranke können Sie auf <strong>jedem freien Platz</strong> parken.',keyTitle:'Schlüsselbox',keyText:'Das kurze Video zeigt den genauen Standort der Schlüsselbox.',openKeyVideo:'▶️ Video zur Schlüsselbox öffnen',codeLabel:'Code der Schlüsselbox',important:'Wichtig',returnKey:'Bitte legen Sie die Schlüssel nach Ihrem Aufenthalt wieder in diese Box.',apartmentTitle:'So finden Sie die Wohnung',apartmentText:'Die Wohnung befindet sich im <strong>3. Stock</strong>, Türnummer <strong>4</strong>. Am Ende des Flurs rechts abbiegen.',doorBadge:'3. Stock · Tür Nr. 4',openApartmentVideo:'▶️ Video zur Wohnung öffnen',wifiTitle:'WLAN',wifiText:'Zugangsdaten zum Internet:',wifiNameLabel:'Netzwerkname',wifiPasswordLabel:'Passwort',taxTitle:'Ortstaxe',taxHeading:'Bezahlung der Ortstaxe',taxSmall:'Tippen Sie für Zahlungsoptionen und Rechner.',taxIntro:'Die Ortstaxe wird pro Gast und Nacht berechnet.',taxPrice:'pro Person / Nacht',taxCashTitle:'Option 1 · Bargeld',taxCashText:'Legen Sie das Bargeld in die Kasse „MESTSKÁ DAŇ“.',taxBankTitle:'Option 2 · Banküberweisung',calcTitle:'Ortstaxen-Rechner',calcHelp:'Personen × Nächte × 2 €',personsLabel:'Personen',nightsLabel:'Nächte',totalLabel:'Gesamtbetrag',documentsTitle:'Rechnung oder Gutschein',documentsSummary:'Benötigen Sie einen Beleg?',documentsSmall:'Daten ausfüllen und direkt senden.',documentsText:'Geben Sie Name, Adresse, ggf. Unternehmens-ID, E-Mail und Notiz an.',nameLabel:'Name / Firma',billingAddressLabel:'Rechnungsadresse',companyLabel:'Unternehmens-ID (optional)',emailLabel:'E-Mail',noteLabel:'Notiz (optional)',sendForm:'Daten senden',sending:'Wird gesendet…',sent:'Erfolgreich gesendet ✓',sendError:'Senden fehlgeschlagen. Eine E-Mail wird geöffnet.',stickyContact:'📞 Brauchen Sie Hilfe? Kontaktieren Sie uns',contactTitle:'Kontakt',callShort:'Anrufen',footer:'Wir wünschen Ihnen einen angenehmen Aufenthalt! ☺️'
+  },
+  uk:{
+    brand:'Дякуємо за ваше бронювання!',title:'Сонячна квартира на Партизанській ☀️',subtitle:'Усе необхідне для зручного прибуття та проживання.',addressText:'<strong>Адреса:</strong> Partizánska cesta 19, Banská Bystrica',tin:'з',tout:'до',lateSummary:'Потрібен пізніший виїзд?',lateBody:'Прибирання заплановане на 10:00. Про зміну часу потрібно домовитися заздалегідь. За пізніший виїзд стягується додаткова плата.',arrivalTitle:'Інформація про прибуття',parkingTitle:'Паркування',parkingText:'Ключ від шлагбаума знаходиться разом із ключами від квартири. За шлагбаумом можна паркуватися на <strong>будь-якому вільному місці</strong>.',keyTitle:'Сейф для ключів',keyText:'Коротке відео показує точне місце сейфа для ключів.',openKeyVideo:'▶️ Відкрити відео про ключі',codeLabel:'Код сейфа',important:'Важливо',returnKey:'Після завершення проживання поверніть ключі до цього сейфа.',apartmentTitle:'Як знайти квартиру',apartmentText:'Квартира знаходиться на <strong>3-му поверсі</strong>, двері № <strong>4</strong>. У кінці коридору поверніть праворуч.',doorBadge:'3-й поверх · двері № 4',openApartmentVideo:'▶️ Відкрити відео до квартири',wifiTitle:'Wi‑Fi',wifiText:'Дані для підключення до інтернету:',wifiNameLabel:'Назва мережі',wifiPasswordLabel:'Пароль',taxTitle:'Міський збір',taxHeading:'Сплата міського збору',taxSmall:'Натисніть для варіантів оплати та калькулятора.',taxIntro:'Збір сплачується за кожного гостя і кожну ніч.',taxPrice:'за особу / ніч',taxCashTitle:'Варіант 1 · Готівка',taxCashText:'Покладіть готівку у скриньку «MESTSKÁ DAŇ».',taxBankTitle:'Варіант 2 · Переказ',calcTitle:'Калькулятор збору',calcHelp:'Особи × ночі × 2 €',personsLabel:'Особи',nightsLabel:'Ночі',totalLabel:'Разом',documentsTitle:'Рахунок або ваучер',documentsSummary:'Потрібен документ?',documentsSmall:'Заповніть і надішліть дані.',documentsText:'Вкажіть ім’я, адресу, номер компанії, e-mail і примітку.',nameLabel:'Ім’я / компанія',billingAddressLabel:'Адреса',companyLabel:'Номер компанії',emailLabel:'E-mail',noteLabel:'Примітка',sendForm:'Надіслати',sending:'Надсилання…',sent:'Успішно надіслано ✓',sendError:'Не вдалося. Відкриємо e-mail.',stickyContact:'📞 Потрібна допомога?',contactTitle:'Контакт',callShort:'Подзвонити',footer:'Бажаємо приємного перебування! ☺️'
+  },
+  es:{
+    brand:'¡Gracias por su reserva!',title:'Apartamento soleado en Partizánska ☀️',subtitle:'Todo lo necesario para una llegada fácil y una estancia cómoda.',addressText:'<strong>Dirección:</strong> Partizánska cesta 19, Banská Bystrica',tin:'desde',tout:'hasta',lateSummary:'¿Necesita salir más tarde?',lateBody:'El personal de limpieza está programado para las 10:00. Los cambios deben acordarse con antelación y se aplica una tarifa adicional.',arrivalTitle:'Información de llegada',parkingTitle:'Aparcamiento',parkingText:'La llave de la barrera está junto con las llaves del apartamento. Detrás de la barrera puede aparcar en <strong>cualquier plaza libre</strong>.',keyTitle:'Caja de llaves',keyText:'El vídeo corto muestra la ubicación exacta de la caja de llaves.',openKeyVideo:'▶️ Abrir vídeo de las llaves',codeLabel:'Código de la caja',important:'Importante',returnKey:'Al finalizar la estancia, devuelva las llaves a esta caja.',apartmentTitle:'Cómo encontrar el apartamento',apartmentText:'El apartamento está en la <strong>tercera planta</strong>, puerta número <strong>4</strong>. Al final del pasillo, gire a la derecha.',doorBadge:'3.ª planta · puerta 4',openApartmentVideo:'▶️ Abrir vídeo del apartamento',wifiTitle:'Wi‑Fi',wifiText:'Datos de conexión a internet:',wifiNameLabel:'Nombre de la red',wifiPasswordLabel:'Contraseña',taxTitle:'Tasa turística',taxHeading:'Pago de la tasa',taxSmall:'Pulse para ver opciones y calculadora.',taxIntro:'La tasa se cobra por huésped y noche.',taxPrice:'por persona / noche',taxCashTitle:'Opción 1 · Efectivo',taxCashText:'Deposite el efectivo en la caja “MESTSKÁ DAŇ”.',taxBankTitle:'Opción 2 · Transferencia',calcTitle:'Calculadora',calcHelp:'Personas × noches × 2 €',personsLabel:'Personas',nightsLabel:'Noches',totalLabel:'Total',documentsTitle:'Factura o justificante',documentsSummary:'¿Necesita un documento?',documentsSmall:'Complete y envíe los datos.',documentsText:'Indique nombre, dirección, identificación, e-mail y nota.',nameLabel:'Nombre / empresa',billingAddressLabel:'Dirección',companyLabel:'Identificación',emailLabel:'E-mail',noteLabel:'Nota',sendForm:'Enviar',sending:'Enviando…',sent:'Enviado correctamente ✓',sendError:'Error. Abriremos un e-mail.',stickyContact:'📞 ¿Necesita ayuda?',contactTitle:'Contacto',callShort:'Llamar',footer:'¡Que disfrute de su estancia! ☺️'
+  },
+  hu:{
+    brand:'Köszönjük a foglalását!',title:'Napos apartman a Partizánska utcán ☀️',subtitle:'Minden információ a kényelmes érkezéshez és tartózkodáshoz.',addressText:'<strong>Cím:</strong> Partizánska cesta 19, Banská Bystrica',tin:'ettől',tout:'eddig',lateSummary:'Későbbi kijelentkezés?',lateBody:'A takarítás 10:00-ra van tervezve. A változást előre kell egyeztetni, és külön díj fizetendő.',arrivalTitle:'Érkezési információk',parkingTitle:'Parkolás',parkingText:'A sorompó kulcsa a lakáskulcsokkal együtt található. A sorompó mögött <strong>bármelyik szabad helyen</strong> parkolhat.',keyTitle:'Kulcsszéf',keyText:'A rövid videó megmutatja a kulcsszéf pontos helyét.',openKeyVideo:'▶️ Kulcsvideó megnyitása',codeLabel:'A széf kódja',important:'Fontos',returnKey:'A tartózkodás végén tegye vissza a kulcsokat ebbe a széfbe.',apartmentTitle:'Az apartman megtalálása',apartmentText:'Az apartman a <strong>3. emeleten</strong>, a <strong>4-es</strong> ajtónál található. A folyosó végén forduljon jobbra.',doorBadge:'3. emelet · 4-es ajtó',openApartmentVideo:'▶️ Apartmanvideó megnyitása',wifiTitle:'Wi‑Fi',wifiText:'Internet-hozzáférési adatok:',wifiNameLabel:'Hálózat neve',wifiPasswordLabel:'Jelszó',taxTitle:'Idegenforgalmi adó',taxHeading:'Az adó megfizetése',taxSmall:'Kattintson a fizetéshez és kalkulátorhoz.',taxIntro:'Az adót személyenként és éjszakánként kell fizetni.',taxPrice:'személy / éjszaka',taxCashTitle:'1. lehetőség · Készpénz',taxCashText:'Tegye a készpénzt a „MESTSKÁ DAŇ” dobozba.',taxBankTitle:'2. lehetőség · Átutalás',calcTitle:'Adókalkulátor',calcHelp:'Személyek × éjszakák × 2 €',personsLabel:'Személyek',nightsLabel:'Éjszakák',totalLabel:'Összesen',documentsTitle:'Számla vagy utalvány',documentsSummary:'Szüksége van dokumentumra?',documentsSmall:'Töltse ki és küldje el az adatokat.',documentsText:'Adja meg a nevet, címet, cégazonosítót, e-mailt és megjegyzést.',nameLabel:'Név / cég',billingAddressLabel:'Cím',companyLabel:'Cégazonosító',emailLabel:'E-mail',noteLabel:'Megjegyzés',sendForm:'Küldés',sending:'Küldés…',sent:'Sikeresen elküldve ✓',sendError:'Nem sikerült. Megnyitunk egy e-mailt.',stickyContact:'📞 Segítségre van szüksége?',contactTitle:'Kapcsolat',callShort:'Hívás',footer:'Kellemes tartózkodást kívánunk! ☺️'
+  }
+};
+
+const supported=['sk','en','de','uk','es','hu'];
+let lang=localStorage.getItem('partizanska-language')||((navigator.language||'en').toLowerCase().startsWith('sk')?'sk':'en');
+if(!supported.includes(lang))lang='en';
+function toggleLangMenu(event){if(event)event.stopPropagation();const p=document.getElementById('languagePicker');const open=p.classList.toggle('open');document.getElementById('langToggle').setAttribute('aria-expanded',String(open))}
+function closeLangMenu(){document.getElementById('languagePicker').classList.remove('open');document.getElementById('langToggle').setAttribute('aria-expanded','false')}
+function setLang(l,event){if(event)event.stopPropagation();if(!supported.includes(l))return;lang=l;localStorage.setItem('partizanska-language',l);document.documentElement.lang=l;document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.dataset.i18n;if(I18N[l][k]!=null)el.innerHTML=I18N[l][k]});supported.forEach(c=>document.getElementById('btn-'+c).classList.toggle('on',c===l));document.getElementById('currentLang').textContent=({sk:'SK',en:'EN',de:'DE',uk:'UA',es:'ES',hu:'HU'})[l];closeLangMenu()}
+document.addEventListener('click',e=>{if(!document.getElementById('languagePicker').contains(e.target))closeLangMenu()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeLangMenu();closeContacts()}});
+function sanitizeTaxInput(i,max){let v=i.value.replace(/\D/g,'');if(v.length>1)v=v.replace(/^0+/,'');if(v!==i.value)i.value=v;if(v!==''&&Number(v)>max)i.value=String(max);updateTaxCalculator()}
+function normalizeTaxInput(i,max){let v=parseInt(i.value,10);if(!Number.isFinite(v)||v<1)v=1;if(v>max)v=max;i.value=String(v);updateTaxCalculator()}
+function updateTaxCalculator(){const p=document.getElementById('taxPersons'),n=document.getElementById('taxNights');const pv=p.value===''?0:Number(p.value),nv=n.value===''?0:Number(n.value);document.getElementById('taxFormula').textContent=`${pv} × ${nv} × 2 €`;document.getElementById('taxResult').textContent=`${pv*nv*2} €`}
+function openContacts(){document.getElementById('contactOverlay').classList.add('open');document.body.style.overflow='hidden'}
+function closeContacts(){document.getElementById('contactOverlay').classList.remove('open');document.body.style.overflow=''}
+function overlayClose(e){if(e.target.id==='contactOverlay')closeContacts()}
+async function submitInvoice(e){e.preventDefault();const b=document.getElementById('sendFormBtn'),s=document.getElementById('formStatus');b.disabled=true;b.textContent=I18N[lang].sending;const data={_subject:'Faktúra / rekreačný poukaz – Slnečný byt na Partizánskej',_template:'table',_captcha:'false','Meno alebo firma':document.getElementById('invoiceName').value,'Adresa':document.getElementById('invoiceAddress').value,'IČO':document.getElementById('invoiceCompanyId').value||'—','E-mail hosťa':document.getElementById('invoiceEmail').value,'Poznámka':document.getElementById('invoiceNote').value||'—'};try{const r=await fetch('https://formsubmit.co/ajax/povraznikovav@gmail.com',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)});if(!r.ok)throw new Error();s.className='form-status success';s.textContent=I18N[lang].sent;e.target.reset()}catch(err){s.className='form-status error';s.textContent=I18N[lang].sendError;location.href='mailto:povraznikovav@gmail.com?subject='+encodeURIComponent(data._subject)+'&body='+encodeURIComponent(JSON.stringify(data,null,2))}finally{b.disabled=false;b.textContent=I18N[lang].sendForm}}
+setLang(lang);updateTaxCalculator();
+</script>
+</body>
+</html>
